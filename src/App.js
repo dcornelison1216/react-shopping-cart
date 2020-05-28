@@ -18,10 +18,18 @@ function App() {
 
 	const addItem = item => {
 		// add the given item to the cart
-		setCart([
-			...cart,
-			item
-		]);
+		let shouldAdd = true;
+		for(let i = 0; i < cart.length; i++) {
+			if(cart[i].id === item.id) {
+				shouldAdd = false;
+			}
+		}
+		if(shouldAdd === true) {
+			setCart([
+				...cart,
+				item
+			])
+		}
 	};
 
 	return (
